@@ -7,6 +7,10 @@ public class MouseMovement : MonoBehaviour
     Vector3 worldPosition;
     private bool _isMoving;
     private transform movePosition;
+    public float MoveSpeed=5.0f;
+    private float startTime;
+    private float journeyLength;
+    private transform StartPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,9 @@ public class MouseMovement : MonoBehaviour
         if(transform.position==movePosition)
         {
             movePosition = (Random.Range(0f, 100f), Random.Range(0f, 100f), 0f)
+            StartPos.position = transform.position;
+            journeyLength = Vector3.Distance(StartPos.position, movePosition);
+            startTime = Time.time;
         }
         else
         {
